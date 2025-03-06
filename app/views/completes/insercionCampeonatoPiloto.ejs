@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina - Insercion CampPil</title>
+    <link rel="stylesheet" href="/css/insercionTodos.css">
+    <%- include ("../partials/linkFavicon.ejs")%>
+
+</head>
+<body>
+    <form action="/insertarCampeonatosPilotos" method="post">
+        <label for="anioTemporada">Año de la temporada:</label>
+        <input type="number" name="anioTemporada" required>
+    
+        <label for="nombrePiloto">Nombre del piloto:</label>
+        <input type="text" name="nombrePiloto" required>
+    
+        <label for="posicion">Posición final:</label>
+        <input type="number" name="posicion" required>
+    
+        <label for="puntos">Puntos:</label>
+        <input type="number" name="puntos" required>
+    
+        <label for="coche">Coche:</label>
+        <input type="text" name="coche" required>
+    
+        <button type="submit">Insertar campeonato de pilotos</button>
+    </form>
+
+    <form action="/volver" method="post">
+        <button type="submit">Volver</button>
+    </form>
+</body>
+</html>

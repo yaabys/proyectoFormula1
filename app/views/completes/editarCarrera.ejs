@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Carrera</title>
+    <link rel="stylesheet" href="/css/editar.css">
+    <%- include ("../partials/linkFavicon.ejs") %>
+</head>
+<body>
+    <%- include("../partials/header.ejs") %>
+
+    <h1>Editar Carrera</h1>
+
+    <form action="/modificarCarrera" method="post">
+        <input type="hidden" name="idCarrera" value="<%= carrera.id %>">
+
+        <label for="nombreCircuito">Nombre del Circuito:</label>
+        <input type="text" name="nombreCircuito" value="<%= carrera.nombreCircuito %>" required>
+
+        <label for="pais">País:</label>
+        <input type="text" name="pais" value="<%= carrera.pais %>" required>
+
+        <label for="vueltaRapida">Vuelta Rápida:</label>
+        <input type="text" name="vueltaRapida" value="<%= carrera.vueltaRapida %>" required>
+
+        <label for="anioCarrera">Año de la Carrera:</label>
+        <input type="number" name="anioCarrera" value="<%= carrera.anioCarrera %>" required>
+
+        <label for="ganadorCarrera">Ganador de la Carrera:</label>
+        <input type="text" name="ganadorCarrera" value="<%= carrera.ganadorCarrera %>" required>
+
+        <label for="ganadorEquipo">Equipo del Ganador:</label>
+        <input type="text" name="ganadorEquipo" value="<%= carrera.ganadorEquipo %>" required>
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+    <a href="/carreras">Cancelar</a>
+</body>
+</html>

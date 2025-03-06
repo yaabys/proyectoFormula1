@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página - Carreras</title>
+    <link rel="stylesheet" href="/css/carreras.css">
+    <%- include ("../partials/linkFavicon.ejs")%>
+</head>
+<body>
+    <%- include("../partials/header.ejs")%>
+    <h1>Lista de Carreras</h1>
+    
+    <form action="/buscarCarreras" method="post">
+        <label for="circuito">Circuito: </label>
+        <input type="text" name="nombreCircuito" placeholder="Nombre del circuito">
+        
+        <label for="anio">Año: </label>
+        <input type="number" name="anioCarrera" placeholder="Año de la carrera">
+        
+        <button type="submit">Buscar carrera</button>
+    </form>
+
+    <form action="/carreras" method="get">
+        <button type="submit">Mostrar todas las carreras</button>
+    </form>
+
+    <div class="carreras-container">
+        <% if (carreras && carreras.length > 0) { %>
+            <% carreras.forEach(carrera => { %>
+                <div class="carrera">
+                    <h2><%= carrera.nombreCircuito %> - <%= carrera.pais %></h2>
+                    <p>Año de la carrera: <%= carrera.anioCarrera %></p>
+                    <p>Vuelta rápida: <%= carrera.vueltaRapida %></p>
+                    <p>Ganador: <%= carrera.ganadorCarrera %></p>
+                    <p>Equipo ganador: <%= carrera.ganadorEquipo %></p>
+                    <div class="accionesPiloto">
+                        <form action="/borrarCarrera" method="post">
+                            <input type="hidden" name="idCarrera" value="<%= carrera.id %>">
+                            <label for="passAdmin">Contraseña admin</label>
+                            <input type="password" name="passAdmin" id="passAdmin" required>
+                            <button type="submit">Borrar</button>
+                        </form>
+
+                        <form action="/editarCarrera" method="post">
+                            <input type="hidden" name="idCarrera" value="<%= carrera.id %>">
+                            <label for="passAdmin">Contraseña admin</label>
+                            <input type="password" name="passAdmin" id="passAdmin" required>
+                            <button type="submit">Modificar</button>
+                        </form>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p class="no-carreras">No hay carreras disponibles.</p>
+        <% } %>
+    </div>
+</body>
+</html>

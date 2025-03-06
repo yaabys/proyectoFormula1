@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Piloto</title>
+    <link rel="stylesheet" href="/css/editar.css">
+    <%- include ("../partials/linkFavicon.ejs")%>
+</head>
+<body>
+    <%- include("../partials/header.ejs") %>
+
+    <h1>Editar Piloto</h1>
+
+    <form action="/modificarPiloto" method="post">
+        <input type="hidden" name="idPiloto" value="<%= piloto.id %>">
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" value="<%= piloto.nombreCompleto %>" required>
+
+        <label for="edad">Edad:</label>
+        <input type="number" name="edad" value="<%= piloto.edad %>" required>
+
+        <label for="nacionalidad">Nacionalidad:</label>
+        <input type="text" name="nacionalidad" value="<%= piloto.nacionalidad %>" required>
+
+        <label for="victorias">Victorias:</label>
+        <input type="number" name="victorias" value="<%= piloto.victorias %>" required>
+
+        <label for="equipo">Equipo:</label>
+        <input type="text" name="equipo" value="<%= piloto.equipo %>" required>
+
+        <label for="apodoAcronimo">Apodo/Acrónimo:</label>
+        <input type="text" name="apodoAcronimo" value="<%= piloto.apodoAcronimo %>" required>
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+    <a href="/pilotos">Cancelar</a>
+</body>
+</html>

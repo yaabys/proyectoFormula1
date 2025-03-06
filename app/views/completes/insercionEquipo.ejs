@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina - Insercion Equipo</title>
+    <link rel="stylesheet" href="/css/insercionTodos.css">
+    <%- include ("../partials/linkFavicon.ejs")%>
+
+</head>
+<body>
+    <form action="/insertarEquipo" method="post">
+        <label for="nombre">Nombre del equipo:</label>
+        <input type="text" name="nombre" required>
+    
+        <label for="nacionalidad">Nacionalidad:</label>
+        <input type="text" name="nacionalidad" required>
+    
+        <label for="base">Base del equipo:</label>
+        <input type="text" name="base" required>
+    
+        <label for="anioFundacion">Año de fundación:</label>
+        <input type="number" name="anioFundacion" required>
+    
+        <label for="fundador">Fundador:</label>
+        <input type="text" name="fundador">
+    
+        <button type="submit">Insertar equipo</button>
+    </form>
+
+    <form action="/volver" method="post">
+        <button type="submit">Volver</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página - CampeonatoPilotos</title>
+    <link rel="stylesheet" href="/css/campeonatosPilotos.css">
+    <%- include ("../partials/linkFavicon.ejs")%>
+</head>
+<body>
+    <%- include("../partials/header.ejs")%>
+    <h1>Campeonato de Pilotos</h1>
+    <form action="/buscarCampeonatoPilotos" method="post">
+        <label for="nombrePiloto">Piloto: </label>
+        <input type="text" name="nombrePiloto" >
+        
+        <label for="anioTemporada">Año de Temporada: </label>
+        <input type="number" name="anioTemporada" >
+        
+        <button type="submit">Buscar Piloto</button>
+    </form>
+
+    <form action="/campeonatosPilotos" method="get">
+        <button type="submit">Mostrar todos los campeonatos de pilotos</button>
+    </form>
+
+    <div class="carreras-container">
+        <% if (campeonatos && campeonatos.length > 0) { %>
+            <div class="carrera">
+                <% campeonatos.forEach(campeon => { %>
+                    <div>
+                        <h2><%= campeon.nombrePiloto %> - Año: <%= campeon.anioTemporada %></h2>
+                        <p>Posición: <%= campeon.posicion %></p>
+                        <p>Puntos: <%= campeon.puntos %></p>
+                        <p>Coche: <%= campeon.coche %></p>
+                           <div class="accionesPiloto">
+                        <form action="/borrarCampeonatoPiloto" method="post">
+                            <input type="hidden" name="idCampeonatoPiloto" value="<%= campeon.id %>">
+                            <label for="passAdmin">Contraseña admin</label>
+                            <input type="password" name="passAdmin" id="passAdmin" required>
+                            <button type="submit">Borrar</button>
+                        </form>
+
+                        <form action="/editarCampeonatoPilotos" method="post">
+                            <input type="hidden" name="idCampeonatoPiloto" value="<%= campeon.id %>">
+                            <label for="passAdmin">Contraseña admin</label>
+                            <input type="password" name="passAdmin" id="passAdmin" required>
+                            <button type="submit">Modificar</button>
+                        </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <p>No hay datos de campeonato disponibles.</p>
+        <% } %>
+    </div>
+</body>
+</html>

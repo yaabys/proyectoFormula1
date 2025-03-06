@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Equipo</title>
+    <link rel="stylesheet" href="/css/editar.css">
+    <%- include ("../partials/linkFavicon.ejs") %>
+</head>
+<body>
+    <%- include("../partials/header.ejs") %>
+
+    <h1>Editar Equipo</h1>
+
+    <form action="/modificarEquipo" method="post">
+        <input type="hidden" name="idEquipo" value="<%= equipo.id %>">
+    
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" value="<%= equipo.nombre %>" required>
+    
+        <label for="nacionalidad">Nacionalidad:</label>
+        <input type="text" name="nacionalidad" value="<%= equipo.nacionalidad %>" required>
+    
+        <label for="base">Base:</label>
+        <input type="text" name="base" value="<%= equipo.base %>" required>
+    
+        <label for="anioFundacion">Año de Fundación:</label>
+        <input type="number" name="anioFundacion" value="<%= equipo.anioFundacion %>" required>
+    
+        <label for="fundador">Fundador:</label>
+        <input type="text" name="fundador" value="<%= equipo.fundador %>">
+    
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+    <a href="/equipos">Cancelar</a>
+</body>
+</html>

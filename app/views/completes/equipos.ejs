@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina - Equipos</title>
+    <link rel="stylesheet" href="/css/equipos.css">
+    <%- include ("../partials/linkFavicon.ejs")%>
+
+</head>
+<body>
+    <%- include("../partials/header.ejs")%>
+    <h1>Lista de Equipos</h1>
+
+    <form action="/buscarEquipo" method="post">
+        <label for="equipo">Equipo: </label>
+        <input type="text" name="equipo" required>
+        <button type="submit">Buscar equipo</button>
+    </form>
+
+    <form action="/equipos" method="get"">
+        <button type="submit">Mostrar todos los equipos</button>
+    </form>
+
+    <div class="equipos-container">
+        <% if (equipos && equipos.length > 0) { %>
+            <% equipos.forEach(equipo => { %>
+                <div class="equipo">
+                    <h2><%= equipo.nombre %></h2>
+                    <p>Nacionalidad: <%= equipo.nacionalidad %></p>
+                    <p>Base: <%= equipo.base %></p>
+                    <p>Año de fundación: <%= equipo.anioFundacion %></p>
+                    <p>Fundador: <%= equipo.fundador %></p>
+                    <img src="<%= equipo.rutaFoto %>" alt="<%= equipo.nombre %>">
+                    <div class="accionesPiloto">
+                    <form action="/borrarEquipo" method="post">
+                        <input type="hidden" name="idEquipo" value="<%= equipo.id %>">
+                        <label for="passAdmin">Contraseña admin</label>
+                        <input type="password" name="passAdmin" id="passAdmin" required>
+                        <button type="submit">Borrar</button>
+                    </form>
+
+                    <form action="/editarEquipo" method="post">
+                        <input type="hidden" name="idEquipo" value="<%= equipo.id %>">
+                        <label for="passAdmin">Contraseña admin</label>
+                        <input type="password" name="passAdmin" id="passAdmin" required>
+                        <button type="submit">Modificar</button>
+                    </form>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p class="no-equipos">No hay equipos disponibles.</p>
+        <% } %>
+    </div>
+</body>
+</html>

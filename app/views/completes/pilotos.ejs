@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página - Pilotos</title>
+    <link rel="stylesheet" href="/css/pilotos.css">
+    <%- include ("../partials/linkFavicon.ejs")%>
+</head>
+<body>
+    <%- include("../partials/header.ejs")%>
+    <h1>Lista de Pilotos</h1>
+
+    <form action="/buscarPiloto" method="post">
+        <label for="piloto">Piloto: </label>
+        <input type="text" name="piloto" placeholder="Apodo del piloto" required>
+        <button type="submit">Buscar piloto</button>
+    </form>
+
+    <form action="/pilotos" method="get"">
+        <button type="submit">Mostrar todos los pilotos</button>
+    </form>
+
+    <div class="pilotos-container">
+        <% if (pilotos && pilotos.length > 0) { %>
+            <% pilotos.forEach(piloto => { %>
+                <div class="piloto">
+                    <h2><%= piloto.nombreCompleto %></h2>
+                    <p>Edad: <%= piloto.edad %></p>
+                    <p>Nacionalidad: <%= piloto.nacionalidad %></p>
+                    <p>Victorias: <%= piloto.victorias %></p>
+                    <p>Equipo: <%= piloto.equipo %></p>
+                    <p>Apodo/Acrónimo: <%= piloto.apodoAcronimo %></p>
+                    <img src="<%= piloto.rutaFoto %>" alt="<%= piloto.nombreCompleto %>">
+                    <div class="accionesPiloto">
+                        <form action="/borrarPiloto" method="post">
+                            <input type="hidden" name="idPiloto" value="<%= piloto.id %>">
+                            <label for="passAdmin">Contraseña admin</label>
+                            <input type="password" name="passAdmin" id="passAdmin" required>
+                            <button type="submit">Borrar</button>
+                        </form>
+                        <form action="/editarPiloto" method="post">
+                            <input type="hidden" name="idPiloto" value="<%= piloto.id %>">
+                            <label for="passAdmin">Contraseña admin</label>
+                            <input type="password" name="passAdmin" id="passAdmin" required>
+                            <button type="submit">Modificar</button>
+                        </form>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p class="no-pilotos">No hay pilotos disponibles.</p>
+        <% } %>
+    </div>
+</body>
+</html>

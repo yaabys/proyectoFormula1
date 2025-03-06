@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina - Perfil</title>
+    <link rel="stylesheet" href="/css/perfil.css">
+    <%- include ("../partials/linkFavicon.ejs")%>
+
+</head>
+<body>
+    <%- include("../partials/header.ejs")%>
+
+    <h1>Perfil de Usuario</h1>
+    <div class="contenedor-usuario">
+        <div class="imagen-perfil">
+            <img src="/imgUsuarios/<%= usuario.rutaFoto ? usuario.rutaFoto : 'default.png' %>?t=<%= Date.now() %>" 
+            alt="Foto de perfil" width="150" id="previewImage">
+
+            <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" id="fileInput" name="file" accept="image/*" style="display: none;">
+                <button type="button" class="boton-subir" onclick="document.getElementById('fileInput').click();">
+                    Cambiar Foto
+                </button>
+                <button type="submit" id="submitBtn">Subir</button>
+            </form>
+        </div>
+    
+        <p><span>Nombre Completo: </span><%= usuario.nombreCompleto %></p>
+        <p><span>Nombre de Usuario: </span><%= usuario.userName %></p>
+        <p><span>Correo Electrónico: </span><%= usuario.email %></p>
+        <p><span>Tokens: </span><%= usuario.tokens %></p>
+    </div>
+</body>
+</html>

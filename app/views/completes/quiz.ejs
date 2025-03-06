@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina - Quiz</title>
+    <link rel="stylesheet" href="/css/quiz.css">
+    <%- include ("../partials/linkFavicon.ejs")%>
+
+</head>
+<body>
+    <section class="quiz-container">
+        <h1>Quiz de Fórmula 1 🏎️</h1>
+        <form action="/verificarQuiz" method="POST">
+            <% preguntas.forEach((pregunta, index) => { %>
+                <div class="pregunta">
+                    <p><strong><%= index + 1 %>. <%= pregunta.pregunta %></strong></p>
+                    <% pregunta.opciones.forEach(opcion => { %>
+                        <label>
+                            <input type="radio" name="pregunta<%= index %>" value="<%= opcion %>" required>
+                            <%= opcion %>
+                        </label><br>
+                    <% }) %>
+                </div>
+            <% }) %>
+            <button type="submit">Enviar Respuestas</button>
+        </form>
+    </section>
+</body>
+</html>

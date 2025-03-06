@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina - Inserción</title>
+    <link rel="stylesheet" href="/css/insercion.css">
+    <%- include ("../partials/linkFavicon.ejs")%>
+
+</head>
+<body>
+    <%- include("../partials/header.ejs")%>
+    <form action="/escogerInsercion" method="post">
+        <select name="categoria" id="categoria">
+            <option value="piloto">Piloto</option>
+            <option value="carrera">Carrera</option>
+            <option value="equipo">Equipo</option>
+            <option value="campeonatosPilotos">Campeonatos de Pilotos</option>
+            <option value="campeonatosConstructores">Campeonatos de Constructores</option>
+        </select>
+        <label for="passAdmin">Contraseña admin</label>
+        <input type="password" name="passAdmin" id="passAdmin" required>
+        <button type="submit">Enviar</button>
+    </form>
+       
+
+    <form action="/volverPrincipal" method="post">
+        <button type="submit">Volver</button>
+    </form>
+
+</body>
+</html>

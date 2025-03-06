@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Courier New", monospace;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212;
+    color: #fff;
+}
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    border: 2px solid #e10600;
+    width: 600px;
+    padding: 20px;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+}
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e10600;
+    border-bottom: 2px solid #e10600;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+label {
+    text-align: left;
+    font-size: 14px;
+    color: #e10600;
+}
+input {
+    padding: 10px;
+    border: 2px solid #e10600;
+    font-size: 14px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+}
+button {
+    background-color: #e10600;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border: 2px solid #e10600;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #ff0000;
+}

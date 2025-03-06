@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados del Quiz</title>
+    <link rel="stylesheet" href="/css/quiz.css">
+    <%- include ("../partials/linkFavicon.ejs")%>
+
+</head>
+<body>
+
+
+    <section class="resultados-container">
+        <h1>Resultados del Quiz 🏆</h1>
+        <p>Respuestas correctas: <strong><%= correctas %></strong> ✅</p>
+        <p>Tokens ganados: <strong><%= tokensGanados %></strong> 🎉</p>
+        <p>Total de tokens: <strong><%= tokensTotales %></strong> 🏅</p>
+
+        <a href="/quiz"><button>Intentar de nuevo</button></a>
+        <a href="/"><button>Volver al inicio</button></a>
+    </section>
+
+</body>
+</html>

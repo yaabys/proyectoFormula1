@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Campeonato de Pilotos</title>
+    <link rel="stylesheet" href="/css/editar.css">
+    <%- include ("../partials/linkFavicon.ejs") %>
+</head>
+<body>
+    <%- include("../partials/header.ejs") %>
+
+    <h1>Editar Campeonato de Pilotos</h1>
+
+    <form action="/modificarCampeonatoPilotos" method="post">
+        <input type="hidden" name="idCampeonatoPiloto" value="<%= campeonato.id %>">
+
+        <label for="anioTemporada">Año de la Temporada:</label>
+        <input type="number" name="anioTemporada" value="<%= campeonato.anioTemporada %>" required>
+
+        <label for="nombrePiloto">Nombre del Piloto:</label>
+        <input type="text" name="nombrePiloto" value="<%= campeonato.nombrePiloto %>" required>
+
+        <label for="posicion">Posición:</label>
+        <input type="number" name="posicion" value="<%= campeonato.posicion %>" required>
+
+        <label for="puntos">Puntos:</label>
+        <input type="number" name="puntos" value="<%= campeonato.puntos %>" required>
+
+        <label for="coche">Coche:</label>
+        <input type="text" name="coche" value="<%= campeonato.coche %>" required>
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+    <a href="/campeonatosPilotos">Cancelar</a>
+</body>
+</html>

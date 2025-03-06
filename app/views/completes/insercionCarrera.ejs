@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina - Insercion Carrera</title>
+    <link rel="stylesheet" href="/css/insercionTodos.css">
+    <%- include ("../partials/linkFavicon.ejs")%>
+</head>
+<body>
+    <form action="/insertarCarrera" method="post">
+        <label for="nombreCircuito">Nombre del circuito:</label>
+        <input type="text" name="nombreCircuito" required>
+    
+        <label for="pais">País:</label>
+        <input type="text" name="pais" required>
+    
+        <label for="vueltaRapida">Vuelta rápida:</label>
+        <input type="text" name="vueltaRapida" required>
+    
+        <label for="anioCarrera">Año de la carrera:</label>
+        <input type="number" name="anioCarrera" required>
+    
+        <label for="ganadorCarrera">Ganador de la carrera:</label>
+        <input type="text" name="ganadorCarrera" required>
+    
+        <label for="ganadorEquipo">Equipo del ganador:</label>
+        <input type="text" name="ganadorEquipo" required>
+    
+        <button type="submit">Insertar carrera</button>
+    </form>
+    
+    <form action="/volver" method="post">
+        <button type="submit">Volver</button>
+    </form>
+</body>
+</html>
